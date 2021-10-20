@@ -34,6 +34,7 @@ public class ShogunClientBuilder {
 
     /**
      * Returns a new ShogunClientBuilder builder.
+     * @return Instance of {@link ShogunClientBuilder}
      */
     public static ShogunClientBuilder builder() {
         return new ShogunClientBuilder();

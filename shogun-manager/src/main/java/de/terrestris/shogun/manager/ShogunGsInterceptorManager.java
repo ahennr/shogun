@@ -38,6 +38,12 @@ public class ShogunGsInterceptorManager extends AbstractShogunManager {
 
     final String basePathInterceptorRule = "/interceptorrules";
 
+    /**
+     * All args constructor
+     * @param adminUser The admin users name
+     * @param adminPassword The admin user password
+     * @param shogunBaseUrl The baseUrl of SHOGun
+     */
     public ShogunGsInterceptorManager(String adminUser, String adminPassword, String shogunBaseUrl) {
         super(adminUser, adminPassword, shogunBaseUrl);
     }
@@ -79,7 +85,6 @@ public class ShogunGsInterceptorManager extends AbstractShogunManager {
     /**
      * Remove all interceptor rules for given endpoint
      * @param endpoint The endpoint
-     * @return true if successful, false otherwise
      * @throws Exception The exception
      */
     public void removeAllRulesForEndpoint(String endpoint) throws Exception {

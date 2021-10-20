@@ -22,11 +22,11 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
 /**
- * An inputstream which reads the cached request body and has mutable
+ * An input stream which reads the cached request body and has mutable
  * request URI and params.
  *
  * @author Daniel Koch
- * @author terrestris GmbH & Co. KG
+ * @author terrestris GmbH &amp; Co. KG
  * http://stackoverflow.com/questions/10210645/http-servlet-request-lose-params-from-post-body-after-read-it-once
  */
 public class CachedServletInputStream extends ServletInputStream {
@@ -35,6 +35,7 @@ public class CachedServletInputStream extends ServletInputStream {
 
     /**
      * Create a new input stream from the cached request body
+     * @param cachedBytes The {@link ByteArrayOutputStream} used as input
      */
     public CachedServletInputStream(ByteArrayOutputStream cachedBytes) {
         input = new ByteArrayInputStream(cachedBytes.toByteArray());

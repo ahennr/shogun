@@ -128,7 +128,7 @@ public class BasePermissionEvaluator implements PermissionEvaluator {
     }
 
     /**
-     * Returns the {@BaseEntityPermissionEvaluator} for the given {@BaseEntity}.
+     * Returns the {@link BaseEntityPermissionEvaluator} for the given {@link BaseEntity}.
      *
      * @return
      */
