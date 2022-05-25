@@ -18,15 +18,16 @@ package de.terrestris.shogun.lib.graphql;
 
 import graphql.ExceptionWhileDataFetching;
 import graphql.GraphQLError;
-import graphql.servlet.GraphQLErrorHandler;
-import java.util.List;
-import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
-@Component
-public class ShogunGraphQLErrorHandler implements GraphQLErrorHandler {
+import java.util.List;
+import java.util.stream.Collectors;
 
-    @Override
+//TODO
+@Component
+public class ShogunGraphQLErrorHandler {
+
+//    @Override
     public List<GraphQLError> processErrors(List<GraphQLError> list) {
         return list.stream().map(this::getNested).collect(Collectors.toList());
     }

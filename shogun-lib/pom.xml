@@ -132,17 +132,14 @@
     </dependency>
 
     <!-- GraphQL -->
+    <!-- https://mvnrepository.com/artifact/org.springframework.graphql/spring-graphql -->
     <dependency>
-      <groupId>com.graphql-java</groupId>
-      <artifactId>graphql-spring-boot-starter</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-graphql</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.graphql-java</groupId>
-      <artifactId>graphql-java-tools</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.graphql-java</groupId>
-      <artifactId>graphiql-spring-boot-starter</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-websocket</artifactId>
     </dependency>
     <dependency>
       <groupId>com.graphql-java</groupId>

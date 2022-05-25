@@ -20,7 +20,6 @@ import com.google.common.io.Resources;
 import de.terrestris.shogun.lib.annotation.GraphQLQuery;
 import de.terrestris.shogun.lib.graphql.resolver.BaseEntityTypeResolver;
 import de.terrestris.shogun.lib.graphql.resolver.BaseGraphQLDataFetcher;
-import de.terrestris.shogun.lib.graphql.scalar.DateTimeScalar;
 import de.terrestris.shogun.lib.graphql.scalar.GeometryScalar;
 import graphql.GraphQL;
 import graphql.scalars.ExtendedScalars;
@@ -52,7 +51,7 @@ public class GraphQLProvider {
     protected GraphQLSchema graphQLSchema;
 
     @Autowired
-    private List<BaseGraphQLDataFetcher> dataFetchers;
+    protected List<BaseGraphQLDataFetcher<?, ?>> dataFetchers;
 
     @Bean
     public GraphQL graphQL() {
@@ -103,8 +102,9 @@ public class GraphQLProvider {
     protected List<GraphQLScalarType> gatherScalars() {
         List<GraphQLScalarType> scalars = new ArrayList<>();
         scalars.add(ExtendedScalars.Json);
-        scalars.add(new GeometryScalar());
-        scalars.add(new DateTimeScalar());
+        scalars.add(GeometryScalar.INSTANCE);
+        scalars.add(ExtendedScalars.DateTime);
+        scalars.add(ExtendedScalars.GraphQLLong);
         return scalars;
     }
 
@@ -119,7 +119,7 @@ public class GraphQLProvider {
         return typeBuilders;
     }
 
-    private void addBaseTypes(List<TypeRuntimeWiring.Builder> typeBuilders, BaseGraphQLDataFetcher dataFetcher) {
+    private void addBaseTypes(List<TypeRuntimeWiring.Builder> typeBuilders, BaseGraphQLDataFetcher<?, ?> dataFetcher) {
         String simpleClassName = dataFetcher.getGenericSimpleClassName();
         String entityName = Character.toLowerCase(simpleClassName.charAt(0)) + simpleClassName.substring(1);
 
@@ -169,7 +169,7 @@ public class GraphQLProvider {
         log.debug("Added GraphQL mutation {}", deleteName);
     }
 
-    private void addCustomTypes(List<TypeRuntimeWiring.Builder> typeBuilders, BaseGraphQLDataFetcher dataFetcher) {
+    private void addCustomTypes(List<TypeRuntimeWiring.Builder> typeBuilders, BaseGraphQLDataFetcher<?, ?> dataFetcher) {
         for (Method method : dataFetcher.getClass().getDeclaredMethods()) {
             GraphQLQuery annotation = method.getAnnotation(GraphQLQuery.class);
             if (annotation != null) {
@@ -177,7 +177,7 @@ public class GraphQLProvider {
 
                 try {
                     typeBuilders.add(TypeRuntimeWiring.newTypeWiring("Query")
-                        .dataFetcher(name, (DataFetcher) method.invoke(dataFetcher)));
+                        .dataFetcher(name, (DataFetcher<?>) method.invoke(dataFetcher)));
 
                     log.debug("Added GraphQL query {}", name);
                 } catch (Exception e) {

@@ -105,7 +105,7 @@
     <jib-maven-plugin.version>3.2.1</jib-maven-plugin.version>
 
     <!-- Spring -->
-    <spring-boot.version>2.6.7</spring-boot.version>
+    <spring-boot.version>2.7.0</spring-boot.version>
     <spring-data.version>2.5.6</spring-data.version>
 
     <jackson-bom.version>2.13.2.20220328</jackson-bom.version>
@@ -117,9 +117,6 @@
     <hibernate-extra-types.version>2.16.2</hibernate-extra-types.version>
 
     <!-- GraphQL -->
-    <graphql-spring-boot-starter.version>5.0.2</graphql-spring-boot-starter.version>
-    <graphiql-spring-boot-starter.version>5.0.2</graphiql-spring-boot-starter.version>
-    <graphql-java-tools.version>5.2.4</graphql-java-tools.version>
     <graphql-java-extended-scalars.version>18.1</graphql-java-extended-scalars.version>
 
     <!-- Swagger/REST -->
@@ -148,7 +145,6 @@
     <junit.jupiter.version>5.7.1</junit.jupiter.version>
     <mockito.version>4.4.0</mockito.version>
     <maven-dependency-plugin.version>3.3.0</maven-dependency-plugin.version>
-    <maven-project-info-reports-plugin.version>3.2.1</maven-project-info-reports-plugin.version>
   </properties>
 
   <build>
@@ -203,7 +199,6 @@
                 <additionalProperties>
                   <encoding.source>${project.encoding}</encoding.source>
                   <encoding.reporting>${project.encoding}</encoding.reporting>
-                  <!--suppress UnresolvedMavenProperty -->
                   <commithash>${git.commit.id.abbrev}</commithash>
                 </additionalProperties>
               </configuration>
@@ -408,19 +403,14 @@
 
       <!-- GraphQL -->
       <dependency>
-        <groupId>com.graphql-java</groupId>
-        <artifactId>graphql-spring-boot-starter</artifactId>
-        <version>${graphql-spring-boot-starter.version}</version>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-websocket</artifactId>
+        <version>${spring-boot.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.graphql-java</groupId>
-        <artifactId>graphql-java-tools</artifactId>
-        <version>${graphql-java-tools.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.graphql-java</groupId>
-        <artifactId>graphiql-spring-boot-starter</artifactId>
-        <version>${graphiql-spring-boot-starter.version}</version>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-graphql</artifactId>
+        <version>${spring-boot.version}</version>
       </dependency>
       <dependency>
         <groupId>com.graphql-java</groupId>
