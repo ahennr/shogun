@@ -79,8 +79,6 @@ spring:
   datasource:
     platform: postgres
     url: jdbc:postgresql://shogun-postgis/shogun?currentSchema=shogun
-    username: shogun
-    password: shogun
   session:
     store-type: none
   security:

@@ -25,7 +25,7 @@ EXPOSE 8080 4711 9010
 ENTRYPOINT [ \
   "mvn", \
   "spring-boot:run", \
-  "-Dspring-boot.run.profiles=base,boot", \
+  "-Dspring-boot.run.profiles=base,boot,shogun-vault", \
   "-Dspring-boot.run.jvmArguments=-Xdebug -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:4711", \
   # enable this line when using a custom application.yml
   # "-Dspring.config.location=/config/application.yml", \

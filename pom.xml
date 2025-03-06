@@ -630,6 +630,14 @@
         <artifactId>gt-main</artifactId>
         <version>${geotools.version}</version>
       </dependency>
+
+
+      <dependency>
+        <groupId>de.terrestris</groupId>
+        <artifactId>shogun-vault</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+      </dependency>
+
     </dependencies>
   </dependencyManagement>
 

@@ -161,6 +161,15 @@
       <groupId>org.geotools</groupId>
       <artifactId>gt-main</artifactId>
     </dependency>
+
+
+    <dependency>
+      <groupId>de.terrestris</groupId>
+      <artifactId>shogun-vault</artifactId>
+    </dependency>
+
+
+
   </dependencies>
 
   <build>
